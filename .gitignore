@@ -1,0 +1,11 @@
+# Don't check in .vagrant, it's machine specific.
+.vagrant
+
+# Ignore everything in the src directory, because that's where the gazelle
+# source tree will end up.
+
+src/*
+
+# But don't ignore .gitkeep, so that we can check in src/
+
+!src/.gitkeep
