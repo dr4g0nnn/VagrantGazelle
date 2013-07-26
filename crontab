@@ -1,0 +1,4 @@
+0,15,30,45  *  *   *    *       /usr/bin/php /var/www/localhost/schedule.php OL9n0m2JxhBxYyMvXWJg >> /root/schedule.log
+10,25,40,55 *  *   *    *       /usr/bin/php /var/www/localhost/peerupdate.php OL9n0m2JxhBxYyMvXWJg >> /root/peerupdate.log
+*           *  *   *    *       /usr/bin/indexer -c /etc/sphinxsearch/sphinx.conf --rotate delta
+5           *  *   *    *       /usr/bin/indexer -c /etc/sphinxsearch/sphinx.conf --rotate --all
