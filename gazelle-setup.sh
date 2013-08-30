@@ -20,8 +20,10 @@ sudo cp /vagrant/php.ini /etc/php5/fpm/php.ini
 
 echo "START=yes" | sudo tee /etc/default/sphinxsearch > /dev/null
 
-sudo mkdir -p /var/www
-sudo git clone https://github.com/WhatCD/Gazelle.git /var/www
+sudo mkdir -p /var/www/tmp
+sudo git clone https://github.com/WhatCD/Gazelle.git /var/www/tmp
+sudo rsync -a /var/www/tmp/ /var/www/
+sudo rm -rf /var/www/tmp
 
 mysql -uroot -pem%G9Lrey4^N < /var/www/gazelle.sql
 
