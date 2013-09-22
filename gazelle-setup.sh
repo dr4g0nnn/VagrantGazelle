@@ -10,6 +10,7 @@ touch ~/.runonce
 echo mysql-server mysql-server/root_password password em%G9Lrey4^N | sudo debconf-set-selections
 echo mysql-server mysql-server/root_password_again password em%G9Lrey4^N | sudo debconf-set-selections
 
+sudo apt-get update
 sudo apt-get install -y git nginx memcached mysql-client mysql-server php5-fpm php5-memcached php5-memcache php5-mcrypt php5-mysql php5-cli sphinxsearch
 sudo /etc/init.d/php5-fpm restart
 
