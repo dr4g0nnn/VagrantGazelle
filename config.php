@@ -39,7 +39,7 @@ $MemcachedServers = array(
 // Sphinx details
 define('SPHINX_HOST', 'localhost');
 define('SPHINX_PORT', 9312);
-define('SPHINXQL_HOST', '127.0.0.1');
+define('SPHINXQL_HOST', 'localhost');
 define('SPHINXQL_PORT', 9306);
 define('SPHINXQL_SOCK', false);
 define('SPHINX_MAX_MATCHES', 1000); // Must be <= the server's max_matches variable (default 1000)
