@@ -1,4 +1,7 @@
 <?php
+if (PHP_VERSION_ID < 50400) {
+	die("Gazelle requires PHP 5.4 or later to function properly");
+}
 date_default_timezone_set('UTC');
 
 // Main settings
@@ -56,14 +59,9 @@ if (!empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 80) {
 }
 
 // Site settings
-if (PHP_VERSION_ID < 50307) {
-	die("PHP version 5.3.7 or later is highly recommended for gazelle's password hashing methods.".
-		" Uncomment line ".__LINE__." in file ".__FILE__." if you want to continue to use this version.");
-	define('CRYPT_HASH_PREFIX', '$2a$07$'); // Crypt salt prefix for hash settings. See http://php.net/crypt for details
-} else {
-	define('CRYPT_HASH_PREFIX', '$2y$07$');
-}
+define('CRYPT_HASH_PREFIX', '$2y$07$');
 define('DEBUG_MODE', false); //Set to false if you dont want everyone to see debug information, can be overriden with 'site_debug'
+define('DEBUG_WARNINGS', true); //Set to true if you want to see PHP warnings in the footer
 define('OPEN_REGISTRATION', true); //Set to false to disable open regirstration, true to allow anyone to register
 define('USER_LIMIT', 5000); //The maximum number of users the site can have, 0 for no limit
 define('STARTING_INVITES', 0); //# of invites to give to newly registered users
@@ -127,18 +125,29 @@ define('LAB_CHAN', '#');
 define('STATUS_CHAN', '#');
 
 // Miscellaneous values
+define('RANK_ONE_COST', 5);
+define('RANK_TWO_COST', 10);
+define('RANK_THREE_COST', 15);
+define('RANK_FOUR_COST', 20);
+define('RANK_FIVE_COST', 30);
+define('MAX_RANK', 6);
+define('MAX_EXTRA_RANK', 8);
+define('DONOR_FORUM_RANK', 6);
+define('DONOR_FORUM', 70);
+define('MAX_SPECIAL_RANK', 3);
 
 $ForumsRevealVoters = array();
 $ForumsDoublePost = array();
 
 $Categories = array('Music', 'Applications', 'E-Books', 'Audiobooks', 'E-Learning Videos', 'Comedy', 'Comics');
+$GroupedCategories = array_intersect(array('Music'), $Categories);
 $CategoryIcons = array('music.png', 'apps.png', 'ebook.png', 'audiobook.png', 'elearning.png', 'comedy.png', 'comics.png');
 
 $Formats = array('MP3', 'FLAC', 'Ogg Vorbis', 'AAC', 'AC3', 'DTS');
 $Bitrates = array('192', 'APS (VBR)', 'V2 (VBR)', 'V1 (VBR)', '256', 'APX (VBR)', 'V0 (VBR)', 'q8.x (VBR)', '320', 'Lossless', '24bit Lossless', 'Other');
 $Media = array('CD', 'DVD', 'Vinyl', 'Soundboard', 'SACD', 'DAT', 'Cassette', 'WEB');
 
-$CollageCats = array(0=>'Personal', 1=>'Theme', 2=>'Genre introduction', 3=>'Discography', 4=>'Label', 5=>'Staff picks', 6=>'Charts');
+$CollageCats = array(0=>'Personal', 1=>'Theme', 2=>'Genre introduction', 3=>'Discography', 4=>'Label', 5=>'Staff picks', 6=>'Charts', 7=>'Artists');
 
 $ReleaseTypes = array(1=>'Album', 3=>'Soundtrack', 5=>'EP', 6=>'Anthology', 7=>'Compilation', 9=>'Single', 11=>'Live album', 13=>'Remix', 14=>'Bootleg', 15=>'Interview', 16=>'Mixtape', 21=>'Unknown');
 //$ForumCats = array(1=>'Site', 5=>'Community', 10=>'Help', 8=>'Music', 20=>'Trash'); //No longer needed
